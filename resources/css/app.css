@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../js/**/*.ts';
+@source '../js/**/*.tsx';
+
+@theme {
+    --font-sans: 'Nunito', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Plus Jakarta Sans', 'Nunito', ui-sans-serif, system-ui, sans-serif;
+    --color-primary: #003200;
+    --color-primary-hover: #002300;
+    --color-secondary: #2C8554;
+    --color-secondary-soft: #C0E0CA;
+    --color-surface: #FFFFFF;
+    --color-canvas: #EAF5EE;
+    --color-error: #B3261E;
+    --color-success: #2E7D32;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--font-sans);
+        background-color: var(--page-bg, #EAF5EE);
+        color: #111111;
+        transition: background-color 250ms cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    h1, h2, h3, h4 {
+        font-family: var(--font-display);
+        letter-spacing: -0.015em;
+    }
+
+    :focus-visible {
+        outline: 3px solid #003200;
+        outline-offset: 2px;
+    }
+}
+
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -100px;
+    z-index: 60;
+    background: #003200;
+    color: #FFFFFF;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 150ms ease;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
